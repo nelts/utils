@@ -1,0 +1,35 @@
+{
+  "name": "@nelts/utils",
+  "version": "1.0.0",
+  "description": "utils for nelts",
+  "main": "dist/index.js",
+  "source": "dist",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nelts/utils.git"
+  },
+  "scripts": {
+    "build": "rm -rf dist/ && tsc -d"
+  },
+  "keywords": [
+    "template",
+    "nelts"
+  ],
+  "author": "cevio",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nelts/utils/issues"
+  },
+  "homepage": "https://github.com/nelts/utils#readme",
+  "devDependencies": {
+    "@types/node": "^12.6.8",
+    "typescript": "^3.5.3"
+  },
+  "dependencies": {
+    "@types/findup-sync": "^2.0.2",
+    "@types/mime-types": "^2.1.0",
+    "ajv": "^6.10.2",
+    "findup-sync": "^4.0.0",
+    "mime-types": "^2.1.24"
+  }
+}
