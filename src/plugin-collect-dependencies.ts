@@ -4,16 +4,13 @@ import { RequireDefault } from './require';
 
 export interface COLLECT_OPTIONS {
   env: string,
-  isWorker: boolean,
-  agentName?: string,
+  name: string,
 }
 
 export interface DEFINE_PLUGIN_OPTIONS {
   enable: boolean,
   env?: string | Array<string>,
-  worker?: boolean,
-  agent?: string | Array<string>,
-  package?: string,
+  runAt?: string | string[],
   path?: string
 }
 
@@ -55,15 +52,9 @@ export default function Collect(cwd: string, node_module_path: string, options: 
     if (!Array.isArray(config.env)) config.env = [config.env];
     if (config.env.length && config.env.indexOf(options.env) === -1) continue;
 
-    // resolve worker
-    if (options.isWorker && !config.worker) continue;
-
-    // resolve agent
-    if (!options.isWorker) {
-      if (config.agent === undefined) config.agent = [];
-      if (!Array.isArray(config.agent)) config.agent = [config.agent];
-      if (config.agent.length && config.agent.indexOf(options.agentName) === -1) continue;
-    }
+    if (!config.runAt) config.runAt = [];
+    if (config.runAt && !Array.isArray(config.runAt)) config.runAt = [config.runAt];
+    if (config.runAt.length > 0 && config.runAt.indexOf(options.name) === -1) continue;
 
     // resolve path
     if (config.path) {
