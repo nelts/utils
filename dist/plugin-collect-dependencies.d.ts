@@ -1,14 +1,11 @@
 export interface COLLECT_OPTIONS {
     env: string;
-    isWorker: boolean;
-    agentName?: string;
+    name: string;
 }
 export interface DEFINE_PLUGIN_OPTIONS {
     enable: boolean;
     env?: string | Array<string>;
-    worker?: boolean;
-    agent?: string | Array<string>;
-    package?: string;
+    runAt?: string | string[];
     path?: string;
 }
 export interface PLUGIN_COLLECT_RESULT {

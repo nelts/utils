@@ -25,16 +25,12 @@ function Collect(cwd, node_module_path, options) {
             config.env = [config.env];
         if (config.env.length && config.env.indexOf(options.env) === -1)
             continue;
-        if (options.isWorker && !config.worker)
+        if (!config.runAt)
+            config.runAt = [];
+        if (config.runAt && !Array.isArray(config.runAt))
+            config.runAt = [config.runAt];
+        if (config.runAt.length > 0 && config.runAt.indexOf(options.name) === -1)
             continue;
-        if (!options.isWorker) {
-            if (config.agent === undefined)
-                config.agent = [];
-            if (!Array.isArray(config.agent))
-                config.agent = [config.agent];
-            if (config.agent.length && config.agent.indexOf(options.agentName) === -1)
-                continue;
-        }
         if (config.path) {
             if (!path.isAbsolute(config.path))
                 config.path = path.resolve(cwd, config.path);
