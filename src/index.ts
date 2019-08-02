@@ -6,6 +6,7 @@ import ErrorInject from './error-inject';
 import EventEmitter from './events';
 import findNodeModules from './find-node-modules';
 import IsJson from './is-json';
+import StickyBlalance from './sticky-blalance';
 import LRU, { LRU_OPTIONS, LRU_VALUE } from './lru';
 import Compose, { ComposeNextCallback, ComposeMiddleware, ComposedMiddleware } from './request-response-compose';
 import Collect, { COLLECT_OPTIONS, DEFINE_PLUGIN_OPTIONS, PLUGIN_COLLECT_RESULT, NELTS_PACKAGE_JSON_INTERFACE } from './plugin-collect-dependencies';
@@ -31,4 +32,5 @@ export {
   ComposeMiddleware,
   ComposeNextCallback,
   ComposedMiddleware,
+  StickyBlalance,
 }
