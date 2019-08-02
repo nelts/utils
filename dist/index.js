@@ -27,4 +27,6 @@ const request_response_compose_1 = require("./request-response-compose");
 exports.Compose = request_response_compose_1.default;
 const plugin_collect_dependencies_1 = require("./plugin-collect-dependencies");
 exports.Collect = plugin_collect_dependencies_1.default;
+const run_functional_with_promise_1 = require("./run-functional-with-promise");
+exports.runFunctionalWithPromise = run_functional_with_promise_1.default;
 __export(require("./require"));
