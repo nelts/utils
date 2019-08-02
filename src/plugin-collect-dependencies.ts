@@ -1,6 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
-import { RequireDefault } from './require';
+import { Require } from './require';
 
 export interface COLLECT_OPTIONS {
   env: string,
@@ -33,7 +33,7 @@ export interface NELTS_PACKAGE_JSON_INTERFACE {
 export default function Collect(cwd: string, node_module_path: string, options: COLLECT_OPTIONS): PLUGIN_COLLECT_RESULT {
   const packageFilename = path.resolve(cwd, 'package.json');
   if (!fs.existsSync(packageFilename)) throw new Error('cannot find package.json');
-  const packageExports = RequireDefault<NELTS_PACKAGE_JSON_INTERFACE>(packageFilename);
+  const packageExports = Require<NELTS_PACKAGE_JSON_INTERFACE>(packageFilename);
   if (!packageExports.plugin) packageExports.plugin = {};
   const moduleName = packageExports.name;
   const result: string[] = [];

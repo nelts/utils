@@ -7,7 +7,7 @@ function Collect(cwd, node_module_path, options) {
     const packageFilename = path.resolve(cwd, 'package.json');
     if (!fs.existsSync(packageFilename))
         throw new Error('cannot find package.json');
-    const packageExports = require_1.RequireDefault(packageFilename);
+    const packageExports = require_1.Require(packageFilename);
     if (!packageExports.plugin)
         packageExports.plugin = {};
     const moduleName = packageExports.name;
