@@ -1,6 +1,6 @@
 {
   "name": "@nelts/utils",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "utils for nelts",
   "main": "dist/index.js",
   "source": "dist",
@@ -22,7 +22,7 @@
   },
   "homepage": "https://github.com/nelts/utils#readme",
   "devDependencies": {
-    "@types/node": "^12.6.8",
+    "@types/node": "^12.6.9",
     "typescript": "^3.5.3"
   },
   "dependencies": {
