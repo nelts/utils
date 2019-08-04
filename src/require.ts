@@ -16,3 +16,13 @@ export function Require<T = any>(pather: string, cwd?: string) {
     : require(path.resolve(cwd || process.cwd(), pather));
   return moduleExports as T;
 }
+
+export function RequireModule<T = any>(pather: string) {
+  const moduleExports = require(pather);
+  return moduleExports as T;
+}
+
+export function RequireModuleDefault<T = any>(pather: string) {
+  const moduleExports = RequireModule<EsModuleType<T>>(pather);
+  return moduleExports.default;
+}

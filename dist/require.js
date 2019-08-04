@@ -13,3 +13,13 @@ function Require(pather, cwd) {
     return moduleExports;
 }
 exports.Require = Require;
+function RequireModule(pather) {
+    const moduleExports = require(pather);
+    return moduleExports;
+}
+exports.RequireModule = RequireModule;
+function RequireModuleDefault(pather) {
+    const moduleExports = RequireModule(pather);
+    return moduleExports.default;
+}
+exports.RequireModuleDefault = RequireModuleDefault;
