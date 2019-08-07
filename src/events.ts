@@ -60,9 +60,21 @@ export default class EventEmitter {
     const listeners = this.listeners(name);
     if (!listeners) return;
     for (let i = 0; i < listeners.length; i++) {
-      const listener = listeners[i];
-      await listener(...args);
+      await listeners[i](...args);
     }
+  }
+  
+  async sync(name: string, ...args: any[]) {
+    const listeners = this.listeners(name);
+    if (!listeners) return;
+    await Promise.all(listeners.map(listener => Promise.resolve(listener(...args))));
+  }
+  
+  async lookup(name: string, ...args: any[]) {
+    const listeners = this.listeners(name);
+    if (!listeners) return;
+    let i = listeners.length;
+    while (i--) await listeners[i](...args);
   }
 
   eventNames() {
