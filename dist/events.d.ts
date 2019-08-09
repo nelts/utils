@@ -10,6 +10,8 @@ export default class EventEmitter {
     prependListener(name: string, listener: AsyncEventEmitterListener): void;
     removeAllListeners(name: string): void;
     emit(name: string, ...args: any[]): Promise<void>;
+    sync(name: string, ...args: any[]): Promise<void>;
+    lookup(name: string, ...args: any[]): Promise<void>;
     eventNames(): string[];
     listenerCount(name: string): number;
     listeners(name: string): AsyncEventEmitterListener[];

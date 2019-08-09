@@ -43,9 +43,22 @@ class EventEmitter {
         if (!listeners)
             return;
         for (let i = 0; i < listeners.length; i++) {
-            const listener = listeners[i];
-            await listener(...args);
+            await listeners[i](...args);
         }
+    }
+    async sync(name, ...args) {
+        const listeners = this.listeners(name);
+        if (!listeners)
+            return;
+        await Promise.all(listeners.map(listener => Promise.resolve(listener(...args))));
+    }
+    async lookup(name, ...args) {
+        const listeners = this.listeners(name);
+        if (!listeners)
+            return;
+        let i = listeners.length;
+        while (i--)
+            await listeners[i](...args);
     }
     eventNames() {
         return Object.keys(this._eventStacks);
